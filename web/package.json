@@ -1,9 +1,14 @@
 {
+    "name": "web",
     "type": "module",
     "dependencies": {
-        "jest": "^29.5.0"
+        "buffer": "^6.0.3",
+        "dexie": "^3.2.3",
+        "dexie-encrypted": "^2.0.0",
+        "sha": "^3.0.0",
+        "shared": "file:../shared"
     },
-    "scripts" : {
-        "test" : "NODE_OPTIONS=--experimental-vm-modules npx jest"
+    "scripts": {
+        "build": "webpack"
     }
 }

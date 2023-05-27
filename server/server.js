@@ -1,32 +1,23 @@
-const express = require('express')
-const { subtle } = require('node:crypto').webcrypto
-const cors = require('cors')
-const bodyParser = require('body-parser')
+import express, { json } from 'express'
+import { webcrypto } from 'node:crypto'
+const { subtle } = webcrypto
+import cors from 'cors'
+import parser from 'body-parser'
+import { encrypt, importRsaKey, pemToDer } from 'shared'
 
 const app = express()
 
-app.use(express.json())
-app.use(bodyParser.json())
+app.use(json())
+app.use(parser.json())
 app.use(cors({
     credentials: true,
     methods: 'OPTIONS,POST'
 }))
-app.post('/token', (req, res) => {
-    const key = req.body.key
-    console.log(key)
-
+app.post('/token', async (req, res) => {
+    const key = await importRsaKey(subtle, pemToDer(req.body.key))
+    const encrypted = await encrypt(subtle, key, "token")
     res.send({
-        token: encryptText(key, "token")
+        token: encrypted
     })
 })
-async function encryptText(pem, plainText) {
-    const key = await importRsaKey(pem)
-    const encrypted = await subtle.encrypt({
-        name: "RSA-OAEP"
-    }, key,
-        Buffer.from(plainText)
-    )
-    return Buffer.from(encrypted).toString('base64');
-
-}
 app.listen(8080)

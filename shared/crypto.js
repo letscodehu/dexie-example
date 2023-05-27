@@ -1,4 +1,4 @@
-import { atob, btoa, ab2str, str2ab, pemToDer } from './util'
+import { atob, btoa, ab2str, str2ab } from './util.js'
 
 export function generateKey(subtle) {
     return subtle.generateKey(
