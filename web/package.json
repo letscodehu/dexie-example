@@ -6,7 +6,7 @@
         "dexie": "^3.2.3",
         "dexie-encrypted": "^2.0.0",
         "sha": "^3.0.0",
-        "shared": "file:../shared"
+        "shared": "file:../shared/dist"
     },
     "scripts": {
         "build": "webpack"
