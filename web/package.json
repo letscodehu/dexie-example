@@ -1,0 +1,9 @@
+{
+    "type": "module",
+    "dependencies": {
+        "jest": "^29.5.0"
+    },
+    "scripts" : {
+        "test" : "NODE_OPTIONS=--experimental-vm-modules npx jest"
+    }
+}
