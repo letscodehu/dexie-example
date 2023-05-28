@@ -11,7 +11,6 @@ export function str2ab(str: string): ArrayBuffer {
     return buf;
 }
 
-
 /**
     * Binary to base64
     * */

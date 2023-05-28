@@ -38,11 +38,11 @@ export async function encrypt(subtle: SubtleCrypto, key: CryptoKey, plainText: s
     return atob(encrypted);
 }
 
-export function decrypt(subtle: SubtleCrypto, privKey: CryptoKey, token: string): Promise<string> {
+export async function decrypt(subtle: SubtleCrypto, privKey: CryptoKey, token: string): Promise<string> {
     const buffer = str2ab(btoa(token))
-    return subtle.decrypt({
+    const r = await subtle.decrypt({
         name: "RSA-OAEP",
-    }
-        , privKey, buffer)
-        .then(r => ab2str(r))
+    },
+        privKey, buffer);
+    return ab2str(r);
 }
