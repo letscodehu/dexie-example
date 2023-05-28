@@ -1,6 +1,6 @@
 import { webcrypto } from 'node:crypto'
-import { exportKey, generateKey } from './crypto.ts'
-import { atob, btoa, ab2str, str2ab, derToPem, pemToDer } from './util.ts'
+import { exportKey, generateKey } from './crypto'
+import { atob, btoa, ab2str, str2ab, derToPem, pemToDer } from './util'
 
 const subtle = webcrypto.subtle
 test('base64 matching', () => {

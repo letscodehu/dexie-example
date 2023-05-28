@@ -1,4 +1,4 @@
-import { atob, btoa, ab2str, str2ab } from './util.ts'
+import { atob, btoa, ab2str, str2ab } from './util'
 
 export function generateKey(subtle: SubtleCrypto): Promise<CryptoKeyPair> {
     return subtle.generateKey(

@@ -6,9 +6,10 @@
         "dexie": "^3.2.3",
         "dexie-encrypted": "^2.0.0",
         "sha": "^3.0.0",
-        "shared": "file:../shared/dist"
+        "shared": "file:../shared"
     },
     "scripts": {
-        "build": "webpack"
+        "build": "npx webpack",
+        "clean" : "rm -rf node_modules/ dist/"
     }
 }

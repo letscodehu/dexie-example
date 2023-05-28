@@ -1,6 +1,6 @@
 import { webcrypto } from 'node:crypto'
-import { decrypt, encrypt, exportKey, generateKey, importRsaKey } from './crypto.ts'
-import { derToPem, pemToDer } from './util.ts'
+import { decrypt, encrypt, exportKey, generateKey, importRsaKey } from './crypto'
+import { derToPem, pemToDer } from './util'
 const subtle = webcrypto.subtle
 
 test('generate - export - import', async () => {
