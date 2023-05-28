@@ -1,7 +1,9 @@
 import { decrypt, exportKey } from 'shared';
 import { generateKey } from 'shared';
 import { derToPem } from 'shared';
+
 let privKey: CryptoKey;
+
 export async function getToken(): Promise<string> {
     const key: CryptoKeyPair = await generateKey(window.crypto.subtle);
     privKey = key.privateKey;
