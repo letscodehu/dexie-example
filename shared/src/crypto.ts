@@ -1,6 +1,6 @@
-import { atob, btoa, ab2str, str2ab } from './util.js'
+import { atob, btoa, ab2str, str2ab } from './util'
 
-export function generateKey(subtle) {
+export function generateKey(subtle: SubtleCrypto): Promise<CryptoKeyPair> {
     return subtle.generateKey(
         {
             name: "RSA-OAEP",
@@ -13,11 +13,10 @@ export function generateKey(subtle) {
     )
 }
 
-export function exportKey(subtle, key) {
+export function exportKey(subtle: SubtleCrypto, key: CryptoKeyPair): Promise<ArrayBuffer> {
     return subtle.exportKey('spki', key.publicKey)
 }
-export function importRsaKey(subtle, binaryDer) {
-
+export function importRsaKey(subtle: SubtleCrypto, binaryDer: ArrayBuffer | Uint8Array): Promise<CryptoKey> {
     return subtle.importKey(
         "spki",
         binaryDer,
@@ -30,7 +29,7 @@ export function importRsaKey(subtle, binaryDer) {
     );
 }
 
-export async function encrypt(subtle, key, plainText) {
+export async function encrypt(subtle: SubtleCrypto, key: CryptoKey, plainText: string): Promise<string> {
     const encrypted = await subtle.encrypt({
         name: "RSA-OAEP"
     }, key,
@@ -39,11 +38,11 @@ export async function encrypt(subtle, key, plainText) {
     return atob(encrypted);
 }
 
-export function decrypt(subtle, privKey, token) {
+export function decrypt(subtle: SubtleCrypto, privKey: CryptoKey, token: string): Promise<string> {
     const buffer = str2ab(btoa(token))
     return subtle.decrypt({
         name: "RSA-OAEP",
     }
         , privKey, buffer)
-    .then(r => ab2str(r))
+        .then(r => ab2str(r))
 }

@@ -9,6 +9,7 @@
         "shared": "file:../shared"
     },
     "scripts": {
-        "build": "webpack"
+        "build": "npx webpack",
+        "clean" : "rm -rf node_modules/ dist/"
     }
 }
