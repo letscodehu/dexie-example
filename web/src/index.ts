@@ -1,6 +1,6 @@
 import { Buffer } from 'buffer'
-import { getToken } from "./crypto.js";
-import { add, get, init } from './db.js';
+import { getToken } from "./crypto";
+import { add, get, init } from './db';
 
 // polyfilling the buffer
 window.Buffer = Buffer

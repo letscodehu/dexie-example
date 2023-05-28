@@ -1,6 +1,5 @@
 {
     "name": "web",
-    "type": "module",
     "dependencies": {
         "buffer": "^6.0.3",
         "dexie": "^3.2.3",
@@ -10,6 +9,10 @@
     },
     "scripts": {
         "build": "npx webpack",
-        "clean" : "rm -rf node_modules/ dist/"
+        "clean": "rm -rf node_modules/ dist/"
+    },
+    "devDependencies": {
+        "ts-loader": "^9.4.3",
+        "typescript": "^5.0.4"
     }
 }
